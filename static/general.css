@@ -8,6 +8,14 @@
     margin-left:5px;
 }
 
+html, body {
+    background-color: #AFE0FF
+}
+
+html, body, table {
+    margin: 0;
+}
+
 .visible_on_hover {
     display: none;
 }
@@ -22,4 +30,9 @@
 
 .table_cell {
     display: table-cell
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
 }

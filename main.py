@@ -54,7 +54,6 @@ def random_string(N):
     return ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(N))
 
 if __name__ == "__main__":
-    app.debug = True
     app.secret_key = random_string(120)
     app.config['SESSION_TYPE'] = 'filesystem'
     app.run()

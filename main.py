@@ -57,7 +57,7 @@ def random_string(N):
 def run():
     app.secret_key = random_string(120)
     app.config['SESSION_TYPE'] = 'filesystem'
-    app.run(port=int(os.environ.get("PORT", 5000)))
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
 
 if __name__ == "__main__":
     run()

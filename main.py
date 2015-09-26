@@ -1,7 +1,7 @@
 import random
 import string
 
-from flask import Flask, request, render_template, url_for, redirect, flash
+from flask import Flask, request, render_template, url_for, redirect, flash, send_from_directory
 
 app = Flask(__name__)
 
@@ -14,6 +14,10 @@ class Mash(dict):
         return self.__delitem__(attr)
 
 foods = []
+
+@app.route("/static/<path:path>")
+def serve_static(path):
+    return send_from_directory("static", path)
 
 @app.route("/")
 @app.route("/wheres_the_food")

@@ -1,4 +1,4 @@
-<!--∫
+<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -42,15 +42,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	 <div class="main">
 		<div class="login-form">
 			<h1>Free Food Events Login</h1>
-				<form>
-						<input type="text" class="text" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}" >
-						<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-						<div id="login_enter_wrapper">
-							<a id="login_enter" href="{{ url_for('wheres_the_food') }}">LOGIN</a>
-					</div>	
+				<form action="/login-in" method="post">
+						<input type="text" class="text" name="username" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}" >
+						<input type="password" value="Password" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+						<input type="submit" value="Submit"> 
 					<p><a href="#">Forgot Password ?</a></p>
 				</form>
-			</div>
+	</div>
 			<!--//End-login-form-->
 			 <!-----start-copyright---->
    					<div class="copy-right">

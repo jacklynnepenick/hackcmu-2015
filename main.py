@@ -27,7 +27,7 @@ def serve_static(path):
 @app.route("/addFavorite/<user>/<food>")
 def add_favorite(user,food):
     for element in foods:
-        if element.name == food:
+        if element.name == food and (element not in favFoods):
             favFoods.append(element)
     return ""
 

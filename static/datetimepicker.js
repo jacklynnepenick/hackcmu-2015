@@ -1,5 +1,6 @@
 $(function() {
   $('input[type="datetime"]').datetimepicker({
-    inline:true
+    inline:true,
+    step:5,
   });
 });

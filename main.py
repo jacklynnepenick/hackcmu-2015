@@ -1,5 +1,6 @@
 import random
 import string
+from datetime import datetime
 
 from flask import Flask, request, render_template, url_for, redirect, flash, send_from_directory
 
@@ -30,13 +31,16 @@ def add_food_form():
 
 @app.route("/add_food.post", methods=["POST"])
 def add_food():
+    time = request.form['time']
+    time = datetime.strptime(time, "%Y/%m/%d %H:%M")
     result = Mash(
         name=request.form['name'],
         description=request.form['description'],
-        time=request.form['time'],
+        time=time,
         location=request.form['location'],
     )
     foods.append(result)
+    foods.sort(key=lambda x: x.time)
     flash("Successfully added a new food event.")
     return redirect(url_for('wheres_the_food'))
 

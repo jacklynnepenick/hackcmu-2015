@@ -17,17 +17,26 @@ class Mash(dict):
         return self.__delitem__(attr)
 
 foods = []
+favoriteFood = 0
+favFoods = []
 
 @app.route("/static/<path:path>")
 def serve_static(path):
     return send_from_directory("static", path)
+
+@app.route("/addFavorite/<user>/<food>")
+def add_favorite(user,food):
+    for element in foods:
+        if element.name == food and (element not in favFoods):
+            favFoods.append(element)
+    return ""
 
 @app.route("/")
 @app.route("/index")
 def login():
     return render_template("index.html")
 
-@app.route("/wheres_the_food")
+@app.route("/wheres_the_food.form")
 def wheres_the_food():
     try:
         while foods[0].time < datetime.now() - timedelta(hours=2):
@@ -35,10 +44,25 @@ def wheres_the_food():
     except IndexError: pass
 
     return render_template("wheres_the_food.html", foods=foods, humantime=humantime)
-#@app.route("/personal_homepage.html")
-#def personal_homepage():
-    #this will stuff to the homepage
 
+@app.route("/user_homepage")
+def user_homepage():
+    return render_template('user_homepage.html', favFoods=favFoods, humantime=humantime)
+
+@app.route("/login-in", methods=["POST"])
+def loginIn():
+    username = request.form['username']
+    password = request.form["password"]
+    return redirect(url_for('wheres_the_food')) 
+
+@app.route("/wheres_the_food.post", methods=["POST"])
+def search_for():
+    search = request.form['search']
+    newFoods = []
+    for food in foods:
+        if search in food.name or search in food.description or search in food.location:
+            newFoods.append(food)
+    return render_template('search_result.html', newFoods=newFoods, humantime=humantime)
 
 @app.route("/add_food.form")
 def add_food_form():
@@ -60,6 +84,7 @@ def add_food():
         time=time,
         location=request.form['location'],
     )
+
     foods.append(result)
     foods.sort(key=lambda x: x.time)
     flash("Successfully added a new food event.")

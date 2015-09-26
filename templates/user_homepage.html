@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Free Food Events</title>
+    <title>George's Page</title>
     <link rel="stylesheet" href="/static/general.css" />
     <link href="http://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
@@ -45,7 +45,7 @@
       padding:10px;
       border-radius:999px;
       color:black;
-      background-color: #12ee32;
+      background-color: #999;
       border: #7F7F7F solid 3px;
     }
     #user_page:hover, #user_page:focus, #user_page:active {
@@ -55,13 +55,8 @@
     }
     </style>
   </head>
-    <meta http-equiv="refresh" content="50" >
   <body>
-    <h1 class='bubble'>Free Food Events</h1>
-    <form method="post" action="wheres_the_food.post">
-      Search: <input type="text" name="search"></input>
-      <input type="submit" value="Submit">
-    </form>
+    <h1 class='bubble'>Favorite Foods</h1>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         <div class='flashes'>
@@ -78,40 +73,23 @@
           <th>Description</th>
           <th>Time</th>
           <th>Location</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
-        {% for food in foods %}
+        {% for favFood in favFoods %}
           <tr>
-            <td>{{ food.name }}</td>
-            <td>{{ food.description }}</td>
-            <td class='contains_visibles_on_hovers'>{{ humantime(food.time) }}
-                <div class='visible_on_hover'>{{ food.time }} </div>
+            <td>{{ favFood.name }}</td>
+            <td>{{ favFood.description }}</td>
+            <td class='contains_visibles_on_hovers'>{{ humantime(favFood.time) }}
+                <div class='visible_on_hover'>{{ favFood.time }} </div>
             </td>
-            <td>{{ food.location }}</td>
-            <td>
-              
-              <button type="favorite" value="Name" onclick="addFavorite('{{ food.name }}');">Favorite!</button>
-            
-            </td>
-
+            <td>{{ favFood.location }}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
     <div id='add_food_wrapper'>
-      <a id="add_food" href="{{ url_for('add_food_form') }}">Add Food Event</a> <a id="user_page" href="{{ url_for('user_homepage') }}">Favorites</a>
-    </div>
-    <div id='add_food_wrapper'>
       <a href=index>Logout</a>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
-    <script>
-    function addFavorite(food) {
-      console.log("The food is : " + food);
-      $.get("/addFavorite/usr/" + food);
-    }
-    </script>
   </body>
 </html>

@@ -16,6 +16,22 @@
     tr:nth-child(2n + 1) {
       background: #A7E398
     }
+    #add_food_wrapper {
+      width:100%;
+      text-align:center;
+    }
+    #add_food {
+      margin-top:5px;
+      display:inline-block;
+      text-decoration:none;
+      padding:10px;
+      border-radius:999px;
+      color:black;
+      background-color: #AAA;
+    }
+    #add_food:hover {
+      background-color: #CCC;
+    }
     </style>
   </head>
   <body>
@@ -51,6 +67,8 @@
         {% endfor %}
       </tbody>
     </table>
-    <a href="{{ url_for('add_food_form') }}">Add Food</a>
+    <div id='add_food_wrapper'>
+      <a id="add_food" href="{{ url_for('add_food_form') }}">Add Food Event</a>
+    </div>
   </body>
 </html>

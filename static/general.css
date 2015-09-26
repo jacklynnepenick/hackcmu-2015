@@ -6,6 +6,11 @@ h1 {
   text-align: center;
 }
 
+a {
+  font: 100 15px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+}
+
 .contains_visibles_on_hovers:hover .visible_on_hover {
     display: block;
     position: absolute;

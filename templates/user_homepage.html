@@ -45,7 +45,7 @@
       padding:10px;
       border-radius:999px;
       color:black;
-      background-color: #12ee32;
+      background-color: #999;
       border: #7F7F7F solid 3px;
     }
     #user_page:hover, #user_page:focus, #user_page:active {
@@ -93,7 +93,7 @@
       </tbody>
     </table>
     <div id='add_food_wrapper'>
-      <a id="add_food" href="{{ url_for('add_food_form') }}">Add Food Event</a> <a id="user_page" href="user_homepage">Favorites</a>
+      <a id="add_food" href="{{ url_for('add_food_form') }}">Add Food Event</a> <a id="user_page" href="{{ url_for('add_food_form') }}">Favorites</a>
     </div>
     <div id='add_food_wrapper'>
       <a href=index>Logout</a>

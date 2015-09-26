@@ -22,6 +22,10 @@ foods = []
 def serve_static(path):
     return send_from_directory("static", path)
 
+@app.route("/addFavorite/<user:user>/<food:food>")
+def add_favorite(user,food):
+    print "user: " + user + "food: " + food
+
 @app.route("/")
 @app.route("/index")
 def login():

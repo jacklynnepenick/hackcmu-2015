@@ -23,7 +23,11 @@ a {
 }
 
 html, body {
-    background-color: #AFE0FF
+    width: 100%;
+    height: 800px;
+    background-image: url("http://2.bp.blogspot.com/-kj8GVMkWDOo/TXv6weXblAI/AAAAAAAABso/5TRTsr9Ng6Q/s1600/IMG_0262.JPG");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 html, body, table {

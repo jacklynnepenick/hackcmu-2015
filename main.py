@@ -1,6 +1,6 @@
 import random
 import string
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from flask import Flask, request, render_template, url_for, redirect, flash, send_from_directory
 
@@ -23,6 +23,10 @@ def serve_static(path):
 @app.route("/")
 @app.route("/wheres_the_food")
 def wheres_the_food():
+    try:
+        while foods[0].time < datetime.now() - timedelta(hours=2):
+            del foods[0]
+    except IndexError: pass
     return render_template("wheres_the_food.html", foods=foods)
 
 @app.route("/add_food.form")

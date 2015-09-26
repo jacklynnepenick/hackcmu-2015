@@ -17,6 +17,8 @@ class Mash(dict):
         return self.__delitem__(attr)
 
 foods = []
+favoriteFood = 0
+favFood = []
 
 @app.route("/static/<path:path>")
 def serve_static(path):
@@ -38,12 +40,28 @@ def wheres_the_food():
 #@app.route("/personal_homepage.html")
 #def personal_homepage():
     #this will stuff to the homepage
+@app.route("/login-in", methods=["POST"])
+def loginIn():
+    username = request.form['username']
+    password = request.form["password"]
+    return redirect(url_for('wheres_the_food')) 
 
 
 @app.route("/add_food.form")
 def add_food_form():
     return render_template("add_food_form.html", nowtime=datetime.now().strftime("%Y/%m/%d %H:%M"))
-
+@app.route("/favorites", methods=["get"])
+def favorites():
+    result = Mash(
+        name=request.form['name'], 
+        description=request.form['description'],
+        time=time,
+        location=request.form['location'],
+    )
+    favFood.append(result)
+    favFood.sort(key=lambda x: x.time)
+    flash("Successfully added to Favorites")
+def favorites():
 @app.route("/add_food.post", methods=["POST"])
 def add_food():
     time = request.form['time']
@@ -60,6 +78,7 @@ def add_food():
         time=time,
         location=request.form['location'],
     )
+
     foods.append(result)
     foods.sort(key=lambda x: x.time)
     flash("Successfully added a new food event.")

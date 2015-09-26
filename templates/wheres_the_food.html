@@ -72,8 +72,9 @@
             </td>
             <td>{{ food.location }}</td>
             <td>
-              <form submit="personal_homepage.html" method="POST">
-              <button type="favorite" value="isfavorite">Favorite!</button>
+              
+              <button type="favorite" value="Name" onclick="addFavorite('{{ food.name }}');">Favorite!</button>
+            
             </td>
 
           </tr>
@@ -86,5 +87,12 @@
     <div id='add_food_wrapper'>
       <a href=index>Logout</a>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
+    <script>
+    function addFavorite(food) {
+      console.log("The food is : " + food);
+      $.get("/addFavorite/usr/" + food);
+    }
+    </script>
   </body>
 </html>

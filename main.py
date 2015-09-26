@@ -2,6 +2,7 @@ import random
 import string
 from datetime import datetime, timedelta
 
+from humanize import naturaltime as humantime
 from flask import Flask, request, render_template, url_for, redirect, flash, send_from_directory
 
 app = Flask(__name__)
@@ -27,7 +28,7 @@ def wheres_the_food():
         while foods[0].time < datetime.now() - timedelta(hours=2):
             del foods[0]
     except IndexError: pass
-    return render_template("wheres_the_food.html", foods=foods)
+    return render_template("wheres_the_food.html", foods=foods, humantime=humantime)
 
 @app.route("/add_food.form")
 def add_food_form():

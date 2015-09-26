@@ -1,0 +1,25 @@
+.contains_visibles_on_hovers:hover .visible_on_hover {
+    display: block;
+    position: absolute;
+    width: initial;
+    background: green;
+    border-radius:10px;
+    padding:2px;
+    margin-left:5px;
+}
+
+.visible_on_hover {
+    display: none;
+}
+
+.table {
+    display: table
+}
+
+.table_row {
+    display: table-row
+}
+
+.table_cell {
+    display: table-cell
+}

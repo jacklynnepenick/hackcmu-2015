@@ -5,18 +5,50 @@
         <script src="static/js_lib/jquery.datetimepicker.full.min.js"></script>
         <script src="static/datetimepicker.js"></script>
         <link rel="stylesheet" href="static/jquery.datetimepicker.css" />
+        <link rel="stylesheet" href="static/general.css" />
+        <style>
+        html, body, form, form div.input_set {
+          width:100%
+        }
+        form label {
+          width:15%;
+          text-align: right;
+          vertical-align: middle;
+          padding-right: 5px;
+        }
+        form input, form div.xdsoft_datetimepicker {
+          width:100%;
+        }
+        .xdsoft_datetimepicker .xdsoft_datepicker {
+          width: 75%;
+        }
+        .xdsoft_datetimepicker .xdsoft_timepicker {
+          width: calc(25% - 20px);
+        }
+        </style>
     </head>
     <body>
-        <form method="post" action="add_food.post">
-            <label for="name"> Name </label>
-            <input type="text" name="name"></input>
-            <label for="description"> Description </label>
-            <input type="text" name="description"></input>
-            <label for="time"> Date </label>
-            <input type="datetime" name="time"></input>
-            <label for="location"> Location </label>
-            <input type="text" name="location"></input>
-            <input type="submit" name="submit"></input>
+        <form class="table" method="post" action="add_food.post">
+          <div class="input_set table_row">
+            <label class="table_cell" for="name"> Name </label>
+            <input class="table_cell" type="text" name="name"></input>
+          </div>
+          <div class="input_set table_row">
+            <label class="table_cell" for="description"> Description </label>
+            <input class="table_cell" type="text" name="description"></input>
+          </div>
+          <div class="input_set table_row">
+            <label class="table_cell" for="time"> Date </label>
+            <input class="table_cell" type="datetime" name="time"></input>
+          </div>
+          <div class="input_set table_row">
+            <label class="table_cell" for="location"> Location </label>
+            <input class="table_cell" type="text" name="location"></input>
+          </div>
+          <div class="input_set table_row">
+            <div class="spacer table_cell"></div>
+            <input class="table_cell" type="submit" name="submit"></input>
+          </div>
         </form>
     </body>
 </html>

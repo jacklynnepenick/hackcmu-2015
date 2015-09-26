@@ -1,18 +1,33 @@
 <!doctype html>
 <html>
   <head>
+    <link rel="stylesheet" href="/static/general.css" />
+    <style>
+    html, body, table, thead, tbody, tr {
+      width: 100%
+    }
+    th, td {
+      width:20%
+    }
+    tr:nth-child(2n) {
+      background: #AAA
+    }
+    tr:nth-child(2n + 1) {
+      background: #CCC
+    }
+    </style>
   </head>
   <body>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
-        <ul class=flashes>
+        <div class='flashes'>
           {% for message in messages %}
-            <li>{{ message }}</li>
+            <div class='flash'>{{ message }}</div>
           {% endfor %}
-        </ul>
+        </div>
       {% endif %}
     {% endwith %}
-    <table>
+    <table border="1" frame="void" rules="cols">
       <thead>
         <tr>
           <th>Name</th>
@@ -26,7 +41,9 @@
           <tr>
             <td>{{ food.name }}</td>
             <td>{{ food.description }}</td>
-            <td>{{ food.time }}</td>
+            <td class='contains_visibles_on_hovers'>{{ humantime(food.time) }}
+                <div class='visible_on_hover'>{{ food.time }} </div>
+            </td>
             <td>{{ food.location }}</td>
           </tr>
         {% endfor %}

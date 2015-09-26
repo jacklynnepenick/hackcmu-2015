@@ -40,6 +40,7 @@
     }
     </style>
   </head>
+    <meta http-equiv="refresh" content="50" >
   <body>
     <h1 class='bubble'>Free Food Events</h1>
     {% with messages = get_flashed_messages() %}
@@ -58,6 +59,7 @@
           <th>Description</th>
           <th>Time</th>
           <th>Location</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -69,6 +71,11 @@
                 <div class='visible_on_hover'>{{ food.time }} </div>
             </td>
             <td>{{ food.location }}</td>
+            <td>
+              <form submit="personal_homepage.html" method="POST">
+              <button type="favorite" value="isfavorite">Favorite!</button>
+            </td>
+
           </tr>
         {% endfor %}
       </tbody>

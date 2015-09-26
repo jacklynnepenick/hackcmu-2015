@@ -27,13 +27,22 @@ def serve_static(path):
 def login():
     return render_template("index.html")
 
-@app.route("/wheres_the_food")
+@app.route("/wheres_the_food.form")
 def wheres_the_food():
     try:
         while foods[0].time < datetime.now() - timedelta(hours=2):
             del foods[0]
     except IndexError: pass
     return render_template("wheres_the_food.html", foods=foods, humantime=humantime)
+
+@app.route("/wheres_the_food.post", methods=["POST"])
+def search_for():
+    search = request.form['search']
+    newFoods = []
+    for food in foods:
+        if search in food.name or search in food.description or search in food.location:
+            newFoods.append(food)
+    return render_template('search_result.html', newFoods=newFoods, humantime=humantime)
 
 @app.route("/add_food.form")
 def add_food_form():

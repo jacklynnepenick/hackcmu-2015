@@ -41,11 +41,7 @@
     </style>
   </head>
   <body>
-    <h1 class='bubble'>Free Food Events</h1>
-    <form method="post" action="wheres_the_food.post">
-      Search: <input type="text" name="search"></input>
-      <input type="submit" value="Submit">
-    </form>
+    <h1 class='bubble'>Search Results</h1>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         <div class='flashes'>
@@ -65,14 +61,14 @@
         </tr>
       </thead>
       <tbody>
-        {% for food in foods %}
+        {% for newFood in newFoods %}
           <tr>
-            <td>{{ food.name }}</td>
-            <td>{{ food.description }}</td>
-            <td class='contains_visibles_on_hovers'>{{ humantime(food.time) }}
-                <div class='visible_on_hover'>{{ food.time }} </div>
+            <td>{{ newFood.name }}</td>
+            <td>{{ newFood.description }}</td>
+            <td class='contains_visibles_on_hovers'>{{ humantime(newFood.time) }}
+                <div class='visible_on_hover'>{{ newFood.time }} </div>
             </td>
-            <td>{{ food.location }}</td>
+            <td>{{ newFood.location }}</td>
           </tr>
         {% endfor %}
       </tbody>

@@ -30,10 +30,25 @@
       padding:10px;
       border-radius:999px;
       color:black;
-      background-color: #AAA;
+      background-color: #EF597B;
       border: #7F7F7F solid 3px;
     }
     #add_food:hover, #add_food:focus, #add_food:active {
+      -webkit-transform: scale(1.1) rotate(4deg);
+      transform: scale(1.1) rotate(4deg);
+      background-color: #CCC
+    }
+    #back {
+      margin-top:5px;
+      display:inline-block;
+      text-decoration:none;
+      padding:10px;
+      border-radius:999px;
+      color:black;
+      background-color: #EF597B;
+      border: #7F7F7F solid 3px;
+    }
+    #back:hover, #back:focus, #back:active {
       -webkit-transform: scale(1.1) rotate(4deg);
       transform: scale(1.1) rotate(4deg);
       background-color: #CCC
@@ -74,7 +89,7 @@
       </tbody>
     </table>
     <div id='add_food_wrapper'>
-      <a id="add_food" href="{{ url_for('add_food_form') }}">Add Food Event</a>
+      <a id="add_food" href="{{ url_for('add_food_form') }}">Add Food Event</a> <a id="back" href="{{ url_for(user_homepage') }}">Favorites</a> <a id="back" href="{{ url_for('wheres_the_food') }}">Back</a> 
     </div>
     <div id='add_food_wrapper'>
       <a href=index>Logout</a>

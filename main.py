@@ -23,6 +23,10 @@ def serve_static(path):
     return send_from_directory("static", path)
 
 @app.route("/")
+@app.route("/index")
+def login():
+    return render_template("index.html")
+
 @app.route("/wheres_the_food")
 def wheres_the_food():
     try:

@@ -23,10 +23,6 @@ def serve_static(path):
     return send_from_directory("static", path)
 
 @app.route("/")
-@app.route("/index")
-def login():
-    return render_template("index.html")
-
 @app.route("/wheres_the_food")
 def wheres_the_food():
     try:
@@ -67,4 +63,3 @@ def run():
     app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
 
 if __name__ == "__main__":
-    run()

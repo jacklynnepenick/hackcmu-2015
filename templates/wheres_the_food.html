@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Time</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for food in foods %}
+          <tr>
+            <td>{{ food.name }}</td>
+            <td>{{ food.time }}</td>
+            <td>{{ food.location }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

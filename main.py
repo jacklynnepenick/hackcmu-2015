@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -15,22 +15,7 @@ foods = []
 @app.route("/")
 @app.route("/wheres_the_food")
 def wheres_the_food():
-    result = "<html><body><table>"
-    result += """
-        <tr>
-            <th>Name</th>
-            <th>Time</th>
-            <th>Location</th>
-        </tr>"""
-    for food in foods:
-        result += """
-            <tr>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%s</td>
-            </tr>
-        """ % (food.name, food.time, food.location)
-    return result
+    return render_template("wheres_the_food.html", foods=foods)
 
 @app.route("/add_food")
 def add_food():

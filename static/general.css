@@ -45,3 +45,46 @@ h1 {
     width: 100%;
     text-align: center;
 }
+
+.bubble 
+{
+position: relative;
+width: 450px;
+height: 70px;
+padding: 0px;
+background: #00D97C;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: #FFFF7F solid 7px;
+margin-left:auto; 
+margin-right:auto;
+}
+
+.bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 0;
+border-color: #00D97C transparent;
+display: block;
+width: 0;
+z-index: 1;
+bottom: -15px;
+left: 32px;
+}
+
+.bubble:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 21px 21px 0;
+border-color: #FFFF7F transparent;
+display: block;
+width: 0;
+z-index: 0;
+bottom: -28px;
+left: 26px;
+}

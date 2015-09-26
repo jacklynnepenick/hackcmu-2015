@@ -12,10 +12,10 @@
       width:20%
     }
     tr:nth-child(2n) {
-      background: #B6F5A6
+      background: #FDB813
     }
     tr:nth-child(2n + 1) {
-      background: #A7E398
+      background: #F17022
     }
     #add_food_wrapper {
       width:100%;
@@ -36,7 +36,7 @@
     </style>
   </head>
   <body>
-    <h1> Free Food Events </h1>
+    <h1 class='bubble'>Free Food Events</h1>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         <div class='flashes'>

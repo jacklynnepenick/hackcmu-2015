@@ -33,7 +33,12 @@ def wheres_the_food():
         while foods[0].time < datetime.now() - timedelta(hours=2):
             del foods[0]
     except IndexError: pass
+
     return render_template("wheres_the_food.html", foods=foods, humantime=humantime)
+#@app.route("/personal_homepage.html")
+#def personal_homepage():
+    #this will stuff to the homepage
+
 
 @app.route("/add_food.form")
 def add_food_form():
@@ -45,6 +50,9 @@ def add_food():
     time = datetime.strptime(time, "%Y/%m/%d %H:%M")
     if(len(request.form['name']) == 0 or len(request.form['description']) == 0 or len(request.form['location']) == 0):
         flash("Please fill out all boxes.")
+        return render_template("add_food_form.html", nowtime=datetime.now().strftime("%Y/%m/%d %H:%M"))
+    elif("here" in request.form['location'].lower()):
+        flash("Use descriptive location please")
         return render_template("add_food_form.html", nowtime=datetime.now().strftime("%Y/%m/%d %H:%M"))
     result = Mash(
         name=request.form['name'], 
@@ -67,3 +75,4 @@ def run():
     app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
 
 if __name__ == "__main__":
+    run()

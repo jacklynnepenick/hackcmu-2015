@@ -4,6 +4,7 @@
     <title>Free Food Events</title>
     <link rel="stylesheet" href="/static/general.css" />
     <link href="http://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
     <style>
     html, body, table, thead, tbody, tr {
       width: 100%
@@ -12,10 +13,10 @@
       width:20%
     }
     tr:nth-child(2n) {
-      background: #B6F5A6
+      background: #FDB813
     }
     tr:nth-child(2n + 1) {
-      background: #A7E398
+      background: #F17022
     }
     #add_food_wrapper {
       width:100%;
@@ -29,14 +30,17 @@
       border-radius:999px;
       color:black;
       background-color: #AAA;
+      border: #7F7F7F solid 3px;
     }
-    #add_food:hover {
-      background-color: #CCC;
+    #add_food:hover, #add_food:focus, #add_food:active {
+      -webkit-transform: scale(1.1) rotate(4deg);
+      transform: scale(1.1) rotate(4deg);
+      background-color: #CCC
     }
     </style>
   </head>
   <body>
-    <h1> Free Food Events </h1>
+    <h1 class='bubble'>Free Food Events</h1>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         <div class='flashes'>

@@ -6,6 +6,11 @@ h1 {
   text-align: center;
 }
 
+a {
+  font: 100 15px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+}
+
 .contains_visibles_on_hovers:hover .visible_on_hover {
     display: block;
     position: absolute;
@@ -18,7 +23,7 @@ h1 {
 }
 
 html, body {
-    background-color: #AFE0FF
+    background:repeating-linear-gradient(-45deg, #AFE0FF, #AFE0FF 5px, white 5px, white 10px);
 }
 
 html, body, table {
@@ -44,4 +49,47 @@ html, body, table {
 h1 {
     width: 100%;
     text-align: center;
+}
+
+.bubble 
+{
+position: relative;
+width: 400px;
+height: 70px;
+padding: 0px;
+background: #00D97C;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: #FFFF7F solid 7px;
+margin-left:auto; 
+margin-right:auto;
+}
+
+.bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 0;
+border-color: #00D97C transparent;
+display: block;
+width: 0;
+z-index: 1;
+bottom: -15px;
+left: 32px;
+}
+
+.bubble:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 21px 21px 0;
+border-color: #FFFF7F transparent;
+display: block;
+width: 0;
+z-index: 0;
+bottom: -28px;
+left: 26px;
 }

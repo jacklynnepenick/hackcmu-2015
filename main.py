@@ -18,15 +18,18 @@ class Mash(dict):
 
 foods = []
 favoriteFood = 0
-favFood = []
+favFoods = []
 
 @app.route("/static/<path:path>")
 def serve_static(path):
     return send_from_directory("static", path)
 
-@app.route("/addFavorite/<user:user>/<food:food>")
+@app.route("/addFavorite/<user>/<food>")
 def add_favorite(user,food):
-    print "user: " + user + "food: " + food
+    for element in foods:
+        if element.name == food:
+            favFoods.append(element)
+    return ""
 
 @app.route("/")
 @app.route("/index")
@@ -41,15 +44,16 @@ def wheres_the_food():
     except IndexError: pass
 
     return render_template("wheres_the_food.html", foods=foods, humantime=humantime)
-#@app.route("/personal_homepage.html")
-#def personal_homepage():
-    #this will stuff to the homepage
+
+@app.route("/user_homepage")
+def user_homepage():
+    return render_template('user_homepage.html', favFoods=favFoods, humantime=humantime)
+
 @app.route("/login-in", methods=["POST"])
 def loginIn():
     username = request.form['username']
     password = request.form["password"]
     return redirect(url_for('wheres_the_food')) 
-
 
 @app.route("/wheres_the_food.post", methods=["POST"])
 def search_for():
@@ -63,18 +67,7 @@ def search_for():
 @app.route("/add_food.form")
 def add_food_form():
     return render_template("add_food_form.html", nowtime=datetime.now().strftime("%Y/%m/%d %H:%M"))
-@app.route("/favorites", methods=["get"])
-def favorites():
-    result = Mash(
-        name=request.form['name'], 
-        description=request.form['description'],
-        time=time,
-        location=request.form['location'],
-    )
-    favFood.append(result)
-    favFood.sort(key=lambda x: x.time)
-    flash("Successfully added to Favorites")
-def favorites():
+
 @app.route("/add_food.post", methods=["POST"])
 def add_food():
     time = request.form['time']

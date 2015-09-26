@@ -33,14 +33,17 @@ def wheres_the_food():
 
 @app.route("/add_food.form")
 def add_food_form():
-    return render_template("add_food_form.html")
+    return render_template("add_food_form.html", nowtime=datetime.now().strftime("%Y/%m/%d %H:%M"))
 
 @app.route("/add_food.post", methods=["POST"])
 def add_food():
     time = request.form['time']
     time = datetime.strptime(time, "%Y/%m/%d %H:%M")
+    if(len(request.form['name']) == 0 or len(request.form['description']) == 0 or len(request.form['location']) == 0):
+        flash("Please fill out all boxes.")
+        return render_template("add_food_form.html", nowtime=datetime.now().strftime("%Y/%m/%d %H:%M"))
     result = Mash(
-        name=request.form['name'],
+        name=request.form['name'], 
         description=request.form['description'],
         time=time,
         location=request.form['location'],

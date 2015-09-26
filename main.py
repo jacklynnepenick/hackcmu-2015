@@ -1,5 +1,6 @@
 import random
 import string
+import os
 from datetime import datetime, timedelta
 
 from humanize import naturaltime as humantime
@@ -53,7 +54,10 @@ def random_string(N):
     # Source: StackOverflow
     return ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(N))
 
-if __name__ == "__main__":
+def run():
     app.secret_key = random_string(120)
     app.config['SESSION_TYPE'] = 'filesystem'
-    app.run()
+    app.run(port=int(os.environ.get("PORT", 5000)))
+
+if __name__ == "__main__":
+    run()
